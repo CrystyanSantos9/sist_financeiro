@@ -1,5 +1,7 @@
 import React, { useEffect,useState } from 'react';
 
+import {BotaoAcao, Container, ConteudoTitulo, Titulo, ButtomSuccess, ConteudoAnteriorProximo, ButtomPrimary, Table, TextDanger, TextSuccess  } from '../../styles/custom_adm';
+
 export const Home = () =>{
 
     const [ data, setData ]= useState([]);
@@ -75,14 +77,21 @@ export const Home = () =>{
     }
 
     return(
-        <div>
-            <h1>Listar situação financeira</h1>
-            <p>Ano atual: {dataView.ano}</p>
-            <p>Ano atual: {dataView.mes}</p>
-            <button type="button" onClick={()=>anterior()}>Anterior</button>
-            <button type="button" onClick={()=>proximo()}>Próximo</button>
+        <Container>
+            <ConteudoTitulo>
+             <Titulo>Listar situação financeira</Titulo>
+             <BotaoAcao>
+                <ButtomSuccess >Cadastrar</ButtomSuccess >
+             </BotaoAcao>
+            </ConteudoTitulo>
 
-            <table>
+            <ConteudoAnteriorProximo>
+                <ButtomPrimary type="button" onClick={()=>anterior()}>Anterior</ButtomPrimary>
+                <span>{`${dataView.mes}/${dataView.ano}`}</span>
+                <ButtomPrimary type="button" onClick={()=>proximo()}>Próximo</ButtomPrimary>
+            </ConteudoAnteriorProximo>
+            
+            <Table>
                 <thead>
                     <tr>
                         <th>Id</th>
@@ -99,8 +108,8 @@ export const Home = () =>{
                             <td>{item.id}</td>
                             <td>{item.nome}</td>
                             <td>{item.valor}</td>
-                            <td>{item.tipo === 1 ? <p>Despesa</p> : <p>Receita</p>}</td>
-                            <td>{item.situacao === 1 ? <p>Pagamento realizado</p> : <p>Pagamento pendente</p>}</td>
+                            <td>{item.tipo === 1 ? <TextDanger>Despesa</TextDanger> : <TextSuccess >Receita</TextSuccess >}</td>
+                            <td>{item.situacao === 1 ? <span>Pagamento realizado</span> : <span>Pagamento pendente</span>}</td>
                         </tr>
                         )
                     })}
@@ -116,8 +125,8 @@ export const Home = () =>{
                         </td>
                     </tr>
                 </tfoot>
-            </table>
-        </div>
+            </Table>
+            </Container>
     );
 };
 
