@@ -13,3 +13,9 @@ Gerenciar as rotas
 
 Transforma o CSS em components 
 ### npm install --save styled-components 
+
+Realizar chamada para API
+### npm install --save axios
+
+Manipular a data
+### npm install --save moment 
