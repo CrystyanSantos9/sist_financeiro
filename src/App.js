@@ -6,13 +6,15 @@ import {
 } from "react-router-dom";
 
 import { Home } from './pages/Home/Index';
+import { Cadastrar } from './pages/Cadastrar/index';
 
 function App() {
   return (
     <div>
      <Router>
        <Switch>
-          <Route path="/" component={Home} />
+          <Route exact path="/" component={Home} />
+          <Route path="/cadastrar" component={ Cadastrar} />
        </Switch>
      </Router>
     </div>
